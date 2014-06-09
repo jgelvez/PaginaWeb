@@ -5,7 +5,29 @@
 	<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
    <script type="text/javascript" src="../js/utiles.js"></script>
    <script type="text/javascript" src="../js/jquery.numeric.js"></script>
+   <script type="text/javascript" src="../js/Jqueryvalidation.js"></script>
    <script type="text/javascript">
+   $(function(){
+      $('#formOfertas').validate({
+          rules: {
+          'oferta': 'required',
+          'date1': 'required',
+          'date2':'required'
+          
+          },
+      messages: {
+          'oferta': 'Debe ingresar el precio',
+          'date1': 'Debe ingresar la fecha de inicio',
+          'date2': 'Debe ingresar la fecha de fin'
+      },
+      debug: true,
+      /*errorElement: 'div',*/
+      //errorContainer: $('#errores'),
+      submitHandler: function(form){
+          document.location.href="./oferta.html"
+      }
+   });
+});
    $(document).ready(function(){
         $(".decimal").numeric(","); 
    })
