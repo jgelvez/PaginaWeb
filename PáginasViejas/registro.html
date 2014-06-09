@@ -1,7 +1,56 @@
+<!-- este ejemplo anda con redireccion de html y todo, fijate en lo siguiente, para que el jvalidate te valide bien el campo que necesitas tenes que definirlo con esta forma:
+   <input type = "text" id="pepito" name="pepito"/> 
+  y en la funcion  "$('#formulario').validate({" dentro de rules:{ 'pepito':'required'.
+si lo tenes solo con id="pepito" no te va a andar. Otra cosa, al tag <form>
+tenes que ponerle tambien los atributos id y name y tambien agregarle method="post".
+Cualquier cosa avisame. Y recordame por favor cual formulario tenia que validar yo....-->
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tork</title>
+<title>Tork</title>
+<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+   <script type="text/javascript" src="../js/Jqueryvalidation.js"></script>
+   <script type="text/javascript" src="../js/utiles.js"></script>
+   <script type="text/javascript">
+$(function(){
+      $('#registro').validate({
+          rules: {
+          'nombre': 'required',
+          'dni': { required: true, number: true },
+          'email1': { required: true, email: true },
+          'email2':{required:true,email:true}
+          
+          },
+      messages: {
+          'nombre': 'Debe ingresar el nombre',
+          'apellido': 'Debe ingresar el apellido',
+          'dni': { required: 'Debe ingresar el n&uacute;mero de documento de identidad', number: 'Debe ingresar un número' },
+          'email1': { required: 'Debe ingresar un correo electr&oacute;nico', email: 'Debe ingresar el correo electrónico con el formato correcto. Por ejemplo: u@localhost.com' },
+          'email2': { required: 'Debe ingresar un correo electr&oacute;nico', email: 'Debe ingresar el correo electrónico con el formato correcto. Por ejemplo: u@localhost.com' }
+      },
+      debug: true,
+      /*errorElement: 'div',*/
+      //errorContainer: $('#errores'),
+      submitHandler: function(form){
+          
+      }
+   });
+});
+   function validarFormulario() {
+       if (! nombreValido(document.registro.nombre.value)) {
+         alert('El apellido no es valido');
+         return false;
+       } else if(! verificarEmail(document.registro.email1.value,document.registro.email2.value)){
+alert('El email ingresado no coincide');
+return false; 
+
+       }
+      document.location.href="./registrok.html"
+     }
+   </script>
 </head>
 <body style="box-shadow:2px 2px 2px 2px #999; border-radius:5px; border-left-style:none;background-color:#F0FFF0;">
 <table size="100%">
@@ -60,34 +109,39 @@
 			</center>
 		</td><!-- ########## FIN DEL MENU ##########-->
 		<td valign="top"><!--##### CONTENIDO AQUI ES EL CENTRO DEL SITIO EN ESTE LUGAR VARIA EL CONTENIDO #####-->
+			<form id="registro" name="registro" method="post" onsubmit="JavaScript: validarFormulario()">
 			<table>
-			<form>
+				
 				<tr>
 					<td>
-					<p>Registro de usuario</p>
-					<p>Nombre y Apellido</p>
-					<Input type = "text" name = "nombre completo" size = "40" maxlength = "256" placeholder = "nombre completo" /></td>
-			  </tr>
+						<p>Registro de usuario</p>
+						<p>Nombre y Apellido</p>
+						<input type = "text" id="nombre" name="nombre" size="40" maxlength="256" placeholder="nombre completo" />
+					</td>
+				</tr>
 				<tr>	
-					
-					<td><p>DNI</p><Input type = "text" DNI = "dni" size = "40" maxlength = "256" placeholder = "DNI" /></td>
+					<td>
+						<p>DNI</p><input type="text" id="dni" name="dni" size="40" maxlength="256" placeholder="DNI" />
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<p>Email</p><input type="text" id="email1" name="email1" size="40" maxlength="256" placeholder="Email" />
+					</td> 
+				</tr>
+				<tr>
+					<td>
+						<p>Verificacion EMAIL</p><Input type="text" id="email2" name="email2" size="40" maxlength="256" placeholder="Email Verificacion"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!--a href="./registrok.html"--> <input type="submit" value="Enviar"/><!--/a-->
+					</td>
+				</tr>
 				
-				</tr>
-					<tr>	
-							
-							<td><p>Email</p><input type="text" name="email1" size="40" maxlength="256" placeholder="Email" /></td> 
-					</tr>
-				<tr>
-						
-						<td><p>Verificacion EMAIL</p><Input type = "text" name = "Email2" size = "40" maxlength = "256" placeholder = "Email Verificacion"/></td>
-				</tr>
-				<tr>
-						<td>
-							<a href="./registrok.html"><input type="button" value="Enviar"></input></a>
-						</td>
-				</tr>
-				</form>
 			</table>
+			</form>
 		</td><!-- FIN DEL CONTENIDO -->
 		<td rowspan="4" valign="top"><!-- AREA DE AUTENTICACION -->
 			<center>
