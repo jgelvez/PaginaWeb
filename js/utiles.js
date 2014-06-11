@@ -20,3 +20,11 @@ function apellidoValido(apellido) {
             
 
  }
+ 
+ function password(){
+	if($('#pass1').val()=='' || $('#pass2').val()==''){
+		return false
+	}
+	return $('#pass1').val() == $('#pass2').val();
+}
+
