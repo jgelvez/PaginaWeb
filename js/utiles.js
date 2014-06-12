@@ -1,4 +1,4 @@
-function apellidoValido(apellido) {
+function nombreValido(apellido) {
   return apellido.length > 3;
 }
  
@@ -6,6 +6,11 @@ function apellidoValido(apellido) {
 	return oferta.length > 4
  }
  
+ function verificarEmail(mail1,mail2){
+	if(mail1!='' && mail2!='')
+		return mail1== mail2;
+	return false;
+}
  function validarFecha(date1,date2){
 	
 	valuesStart=date1.split("-");
