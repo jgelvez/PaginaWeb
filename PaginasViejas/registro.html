@@ -1,0 +1,187 @@
+<!-- este ejemplo anda con redireccion de html y todo, fijate en lo siguiente, para que el jvalidate te valide bien el campo que necesitas tenes que definirlo con esta forma:
+   <input type = "text" id="pepito" name="pepito"/> 
+  y en la funcion  "$('#formulario').validate({" dentro de rules:{ 'pepito':'required'.
+si lo tenes solo con id="pepito" no te va a andar. Otra cosa, al tag <form>
+tenes que ponerle tambien los atributos id y name y tambien agregarle method="post".
+Cualquier cosa avisame. Y recordame por favor cual formulario tenia que validar yo....-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tork</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/pantallas.css">
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+   <script type="text/javascript" src="../js/Jqueryvalidation.js"></script>
+   <script type="text/javascript" src="../js/utiles.js"></script>
+   <script type="text/javascript">
+$(function(){
+      $('#registro').validate({
+          rules: {
+          'nombre': 'required',
+          'dni': { required: true, number: true },
+          'email1': { required: true, email: true },
+          'email2':{required:true,email:true}
+          
+          },
+      messages: {
+          'nombre': 'Debe ingresar el nombre',
+          'apellido': 'Debe ingresar el apellido',
+          'dni': { required: 'Debe ingresar el n&uacute;mero de documento de identidad', number: 'Debe ingresar un número' },
+          'email1': { required: 'Debe ingresar un correo electr&oacute;nico', email: 'Debe ingresar el correo electrónico con el formato correcto. Por ejemplo: u@localhost.com' },
+          'email2': { required: 'Debe ingresar un correo electr&oacute;nico', email: 'Debe ingresar el correo electrónico con el formato correcto. Por ejemplo: u@localhost.com' }
+      },
+      debug: true,
+      /*errorElement: 'div',*/
+      //errorContainer: $('#errores'),
+      submitHandler: function(form){
+          
+      }
+   });
+});
+   function validarFormulario() {
+       if (! nombreValido(document.registro.nombre.value)) {
+         alert('El apellido no es valido');
+         return false;
+       } else if(! verificarEmail(document.registro.email1.value,document.registro.email2.value)){
+alert('El email ingresado no coincide');
+return false; 
+
+       }
+      document.location.href="./registrok.html"
+     }
+   </script>
+</head>
+<body>
+
+	<div class="container">
+	
+		<div class="class row-fluid">
+			<div class="class span12">&nbsp;</div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span4">
+				<img src="../img/logo.png" width="70%">
+			</div>
+			
+			<div class="span4">	
+			</div>
+
+			<div class="span4">
+				<img src="../img/electro.png" width="60%" align="center">
+			</div>
+		</div>
+
+		<div class="class row-fluid">
+			<div class="class span12">
+				<div class="page-header">
+				</div>
+
+				<div class="navbar">
+					<div class="navbar-inner">
+
+						<a href="#" class="brand">Inicio</a>
+						<ul class="nav">
+							<li class="divider-vertical"></li>
+							<li><a href="#">Novedades</a></li>
+						</ul>
+						<ul class="nav">
+							<li><a href="#">Contacto</a></li>
+						</ul>
+						<ul class="nav">
+							<li><a href="#">Sobre Nosotros</a></li>
+						</ul>
+
+						<form action="#" class="navbar-search">
+							<input type="text" class="search-query" placeholder="Buscar">
+						</form>
+						
+						<div class="btn-group pull-right">
+    						<button class="btn">Jaime Ceballos</button>
+    						<button class="btn dropdown-toggle" data-toggle="dropdown">
+   								<span class="caret"></span>
+    						</button>
+   							<ul class="dropdown-menu">
+    							<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+    						</ul>
+    					</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="class row-fluid">
+		<div class="span4">
+			<div class="class row-fluid">
+		
+          		<div class="well sidebar-nav">
+           			 <ul class="nav nav-list">
+              			<li class="nav-header">Productos<hr></li>
+              			
+             			<li><a href="#">Tv y video</a></li>
+              			<li><a href="#">Informatica</a></li>
+              			<li><a href="#">Celulares</a></li>
+              			<li><a href="#">Audio</a></li>
+              			<li><a href="#">Camaras</a></li>
+              			<li><a href="#">Electro hogar</a></li>
+              			<li><a href="#">Aire acondicionado</a></li>
+              			<li><a href="#">Accesorios e insumos</a></li>
+            		</ul>
+          		</div><!--/.well -->
+        	</div><!--/span-->
+		</div>
+		<div class="class span8">
+
+			<form id="registro" name="registro" method="post" onsubmit="return validarFormulario()" class="btn">
+			<table>
+				
+				<tr>
+					<td>
+						<center><p><h3>Registro de usuario</h3></p></center>
+						<p>Nombre y Apellido</p>
+						<input type = "text" id="nombre" name="nombre" size="40" maxlength="256" placeholder="nombre completo" />
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<p>DNI</p><input type="text" id="dni" name="dni" size="40" maxlength="256" placeholder="DNI" />
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<p>Email</p><input type="text" id="email1" name="email1" size="40" maxlength="256" placeholder="Email" />
+					</td> 
+				</tr>
+				<tr>
+					<td>
+						<p>Verificacion EMAIL</p><Input type="text" id="email2" name="email2" size="40" maxlength="256" placeholder="Email Verificacion"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="./registrok.html"> <input type="submit" value="Enviar" class="btn"></a>
+					</td>
+				</tr>
+				
+			</table>
+			</form>
+		</td><!-- FIN DEL CONTENIDO -->
+	</tr><!-- ###### FIN DEL BODY #############-->
+</div></div>
+	<tr><!-- ###### COMIENZO DEL FOOTER ##########-->
+		<hr>
+		<footer>
+        	<p>&copy; Tork 2014 todos los derechos reservados</p>
+      		</footer>
+	</tr>
+	
+</table>
+</div>
+</body>
+</html>

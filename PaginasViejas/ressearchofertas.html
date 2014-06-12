@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tork</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/pantallas.css">
+        <script language="text/javascript" type="text/javascript">
+          function esFormularioValido() {
+	
+            if (document.formDatos.selCombo.selectedIndex == 0) {
+	      alert('Error: debe seleccionar una categoría');
+              return false;
+            }
+          }
+        </script>
+</head>
+<body>
+
+	<div class="container">
+	
+		<div class="class row-fluid">
+			<div class="class span12">&nbsp;</div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span4">
+				<img src="../img/logo.png" width="70%">
+			</div>
+			
+			<div class="span4">	
+			</div>
+
+			<div class="span4">
+				<img src="../img/electro.png" width="60%" align="center">
+			</div>
+		</div>
+
+		<div class="class row-fluid">
+			<div class="class span12">
+				<div class="page-header">
+				</div>
+
+				<div class="navbar">
+					<div class="navbar-inner">
+
+						<a href="../index.html" class="brand">Inicio</a>
+						<ul class="nav">
+							<li class="divider-vertical"></li>
+							<li><a href="#">Novedades</a></li>
+						</ul>
+						<ul class="nav">
+							<li><a href="#">Contacto</a></li>
+						</ul>
+						<ul class="nav">
+							<li><a href="#">Sobre Nosotros</a></li>
+						</ul>
+
+						<form action="#" class="navbar-search">
+							<input type="text" class="search-query" placeholder="Buscar">
+						</form>
+						
+						<div class="btn-group pull-right">
+    						<button class="btn">Jaime Ceballos</button>
+    						<button class="btn dropdown-toggle" data-toggle="dropdown">
+   								<span class="caret"></span>
+    						</button>
+   							<ul class="dropdown-menu">
+    							<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+    						</ul>
+    					</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="class row-fluid">
+			
+			<div class="span12">
+				
+				<div class="row-fluid">
+					<div class="span4">
+						<div class="well sidebar-nav">
+							<tr>
+					<th style="background-color:#ffffff;"> 
+								
+					<center><b><h5><u>Men&uacute; de usuario</u></h5></b></center>
+					</th>
+				</tr>
+				<tr>
+					<td  style="background-color:#ffffff;">
+					<ul>
+					<li>Productos
+						<ul>
+							<a href="./gestion.html"><li>Gestión de productos</li></a>
+							<a href="./oferta.html"><li>Gestión de ofertas</li></a>
+						</ul>
+					</li>
+					<li>Gestión de Pedidos
+						<ul>
+							<a href="./pendientes.html"><li>Pedidos pendientes</li></a>
+							<a href="./procesados.html"><li>Pedidos procesados</li></a>
+							<a href="./enviar.html"><li>Envío de pedidos</li></a>
+						</ul>
+					</li>
+					</ul>
+					</td>
+				</tr>
+						</div>
+					</div>
+					<div class="span8" >
+						<div class="thumbnail">
+							<center><h3>Área de miembros</h3></center>
+					<hr>
+			  <h4>Gestión de ofertas</h4>
+			<form name="formDatos"> 
+                        <table style="width:100%">
+				<tr>
+					<td>
+						<label>Categoría:</label><SELECT NAME="selCombo" SIZE=1>
+							<OPTION VALUE="0">Seleccione una categoría</OPTION>
+                                                        <OPTION VALUE="link pagina 1">Electrónica</OPTION>
+                                                        <OPTION VALUE="link pagina 2">Indumentaria</OPTION>
+                                                        <OPTION VALUE="link pagina 3">Sonido</OPTION>
+                                                        <OPTION VALUE="link pagina 4">Electrodomésticos</OPTION>
+        	                                        </SELECT>
+					</td>
+				</tr>
+			  <tr>
+				<td>
+				  <label>Producto:</label><input id = "miProducto" type="text" name= "miProducto">
+				  </br>
+				  <a href="./ressearchofertas.html" type="submit" class="btn" onclick="return esFormularioValido()">Buscar</button></a>
+				  <a href="./altaproducto.html" type="submit" class="btn">Nuevo</button>
+				</td>					
+			  </tr>
+			</table>
+			</form>
+
+			<div align='right'><h5>Resultados de búsqueda</h5></div>
+			<hr>
+			<table style="width:100%">
+					<th style="width:30%">Producto</th>
+					<th style="width:20%">Precio unitario</th>
+					<th style="width:20%">Stock</th>
+					<th style="width:20%">Stock mínimo</th>
+					<th style="width:20%">Reorden</th>
+					<th style="width:30%"></th>
+					
+				</tr>			
+				<tr>
+					<td style="width:30%">
+					  Teléfono celular Samsung S4
+					</td>
+					<td style="width:20%">
+						<center>$7000</center>
+					</td>
+
+					<td style="width:20%">
+						<center>70</center>
+					</td>
+					<td style="width:20%">
+						<center>5</center>
+					</td>
+
+					<td style="width:20%">
+						<center>15</center>
+					</td>
+					<td style="width:30%">
+						<a href="./cargaOfertas.html">Seleccionar</a>
+					</td>					
+				<tr>
+				
+			</table>
+			</td>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		 <hr>
+
+      		<footer>
+        	<p>&copy; Tork 2014 todos los derechos reservados</p>
+      		</footer>
+
+</div>
+</body>
